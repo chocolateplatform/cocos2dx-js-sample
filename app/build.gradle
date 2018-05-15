@@ -177,7 +177,6 @@ dependencies {
     compile("com.vdopia.ads.lw:google-adapter:1.0.7")
     compile("com.vdopia.ads.lw:inmobi-adapter:1.0.6")
     compile("com.vdopia.ads.lw:ironsrc-adapter:1.0.6")
-    compile("com.vdopia.ads.lw:loopme-adapter:1.0.5")
     compile("com.vdopia.ads.lw:cocos2dx-plugin:1.0.2")
     compile("com.vdopia.ads.lw:mopub-adapter:1.0.7") {
 
