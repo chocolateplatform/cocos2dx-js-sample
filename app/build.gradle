@@ -3,13 +3,13 @@ import org.apache.tools.ant.taskdefs.condition.Os
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "org.cocos2d.helloworld"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -149,55 +149,62 @@ afterEvaluate {
 }
 
 repositories {
-    jcenter()
     maven { url 'https://jitpack.io' }
     maven { url "https://adcolony.bintray.com/AdColony" }
-    maven { url "https://dl.bintray.com/vdopiacorp/sdk" }
-    //maven { url "https://dl.bintray.com/vdopiaqa/sdk" }
-    maven { url "https://maven.google.com"}
     maven { url "https://dl.bintray.com/ironsource-mobile/android-sdk" }
-    //google()
-    // If you're using a version of Gradle lower than 4.1, you must instead use:
-    // maven {
-    //     url 'https://maven.google.com'
-    // }
+    maven { url "https://dl.bintray.com/vdopiacorp/sdk" }
+    maven { url "http://repository.youappi.com/repository/release" }
+  
+    google()
 
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':libcocos2dx')
-    compile("com.vdopia.ads.lw:coresdk:2.5.3.6")
-    compile("com.vdopia.ads.lw:adcolony-adapter:1.0.6")
-    compile("com.vdopia.ads.lw:applovin-adapter:1.0.6")
-    compile("com.vdopia.ads.lw:baidu-adapter:1.0.5")
-    compile("com.vdopia.ads.lw:chartboost-adapter:1.0.7")
-    compile("com.vdopia.ads.lw:facebook-adapter:1.0.5")
-    compile("com.vdopia.ads.lw:google-adapter:1.0.7")
-    compile("com.vdopia.ads.lw:inmobi-adapter:1.0.6")
-    compile("com.vdopia.ads.lw:ironsrc-adapter:1.0.6")
-    compile("com.vdopia.ads.lw:cocos2dx-plugin:1.0.2")
-    compile("com.vdopia.ads.lw:mopub-adapter:1.0.7") {
 
-        //If you use your own version of exoplayer, uncomment below
-        //exclude group: 'com.google.android.exoplayer'
+    //If your application is COCOS-2DX, uncomment the following line
+    implementation("com.vdopia.ads.lw:cocos2dx-plugin:1.0.4")
 
-    }
-    compile("com.vdopia.ads.lw:ogury-adapter:1.0.1")
-    compile("com.vdopia.ads.lw:tapjoy-adapter:1.0.5")
-    //compile("com.vdopia.ads.lw:unity-adapter:1.0.8")   you dont need this for cocos2dx :D
-    compile("com.vdopia.ads.lw:vungle-adapter:1.0.5")
-    compile("com.vdopia.ads.lw:youappi-adapter:1.0.1")
+    implementation("com.vdopia.ads.lw:coresdk:2.5.5.0")
+    implementation("com.vdopia.ads.lw:adcolony-adapter:1.0.8")
+    implementation("com.vdopia.ads.lw:applovin-adapter:1.0.9")
+    implementation("com.vdopia.ads.lw:baidu-adapter:1.0.6")
+    implementation("com.vdopia.ads.lw:chartboost-adapter:1.0.8")
+    implementation("com.vdopia.ads.lw:facebook-adapter:1.0.6")
+    implementation("com.vdopia.ads.lw:google-adapter:1.1.0")
+    implementation("com.vdopia.ads.lw:inmobi-adapter:1.0.9")
+    implementation("com.vdopia.ads.lw:mopub-adapter:1.0.9")
+    implementation("com.vdopia.ads.lw:ogury-adapter:1.0.4")
+    implementation("com.vdopia.ads.lw:youappi-adapter:1.0.6")
+    implementation("com.vdopia.ads.lw:tapjoy-adapter:1.0.6")
+    implementation("com.vdopia.ads.lw:unity-adapter:1.1.0")
+    implementation("com.vdopia.ads.lw:vungle-adapter:1.0.6")
+    implementation("com.vdopia.ads.lw:yahoo-adapter:1.0.8")
 
-    compile "com.google.android.gms:play-services-ads:11.6.2"
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile ("com.android.support:palette-v7:25.0.0")
-    compile('com.devbrackets.android:exomedia:4.0.3') {
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.devbrackets.android:exomedia:4.0.3'
+    implementation 'com.adcolony:sdk:3.3.3'
+    implementation 'com.inmobi.monetization:inmobi-ads:7.1.0'
+    implementation 'com.applovin:applovin-sdk:8.0.0'
+    implementation 'com.flurry.android:ads:10.0.0'
+    implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.7.4'
+    implementation 'com.ironsource.sdk:mediationsdk:6.7.9@jar'
+    implementation "com.youappi.sdk:youappi-sdk-android-moat:4.1.1"
 
-        //If you use your own version of exoplayer, uncomment below
-        //exclude group: 'com.google.android.exoplayer'
-    }
+    //google support and google play services libraries
+    implementation "com.google.android.gms:play-services-ads:15.0.1"
+    implementation "com.google.android.gms:play-services-gcm:15.0.1"
+
+    implementation "com.android.support:support-annotations:27.1.1"
+    implementation "com.android.support:appcompat-v7:27.1.1"
+    implementation "com.android.support:support-v4:27.1.1"
+    implementation "com.android.support:palette-v7:27.1.1"
+    implementation 'com.android.support:multidex:1.0.3'
 }
 
 configurations.all {
@@ -206,7 +213,7 @@ configurations.all {
         if (requested.group == 'com.android.support') {
             if (!requested.name.startsWith("multidex")) {
                 //You can use your own preferred version of Android Support Library
-                details.useVersion('25.0.0')
+                details.useVersion('27.1.1')
             }
         }
     }
