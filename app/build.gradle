@@ -168,7 +168,7 @@ dependencies {
     compile project(':libcocos2dx')
 
     //If your application is COCOS-2DX, uncomment the following line
-    //implementation("com.vdopia.ads.lw:cocos2dx-plugin:1.0.4")
+    implementation("com.vdopia.ads.lw:cocos2dx-plugin:1.0.5")
 
     implementation("com.vdopia.ads.lw:coresdk:2.5.5.1")
     implementation("com.vdopia.ads.lw:adcolony-adapter:1.0.8")
@@ -218,7 +218,8 @@ configurations.all {
         def requested = details.requested
         if (requested.group == 'com.android.support') {
             if (!requested.name.startsWith("multidex")) {
-                //You can use your own preferred version of Android Support Library
+                //Whichever android support version you use, make sure it's 
+                //consistent and the same throughout this gradle file
                 details.useVersion('27.1.1')
             }
         }
